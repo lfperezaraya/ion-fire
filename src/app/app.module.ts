@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { Firebase } from '@ionic-native/firebase/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
@@ -17,6 +18,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+
+import { IonicStorageModule } from '@ionic/storage';
+import { AuthService } from './services/auth.service';
+import { DbService } from './services/db.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,10 +34,14 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireFunctionsModule,
-    AngularFireMessagingModule
+    AngularFireMessagingModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     Firebase,
+    GooglePlus,
+    AuthService,
+    DbService,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
